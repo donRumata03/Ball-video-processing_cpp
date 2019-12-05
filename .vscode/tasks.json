@@ -45,6 +45,28 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+
+        {
+            "type": "shell",
+            "label": "test_generator_test",
+            "command": "C:\\Program Files\\gcc\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/test_generator.cpp",
+                "-o",
+                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/test_generator.exe"
+            ],
+            "options": {
+                "cwd": "C:\\Program Files\\gcc\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
