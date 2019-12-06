@@ -5,34 +5,40 @@
 
 using namespace std;
 
-#define r 10
-#define x_cent 20
-#define y_cent 20
-#define x_0 0
-#define x_1 40
-#define y_0 0
-#define y_1 40
 
-pms points;
-point this_point;
-
-
-int main(){
+class Test_Generator{
+    public:
     point cent_point;
-    cent_point.x = x_cent;
-    cent_point.y = y_cent;
-    for(int x = x_0; x < x_1; x++){
-        for(int y = y_0; y < y_1; y++){
-            this_point.x = x;
-            this_point.y = y;
-            if (dist(cent_point, this_point) <= r){
-                points.push_back(this_point);
+    point luc; // Left upper corner
+    point rdc; // Right down corner
+    circle target_circle;
+    double distortion;
+    
+    Test_Generator(){
+        distortion = 0;
+    }
+    Test_Generator(circle c, point _luc, point _rdc){
+        target_circle = c.copy();
+        luc = _luc.copy();
+        rdc = _rdc.copy();
+        distortion = 0;
+    }
+    Test_Generator(circle c, point _luc, point _rdc, double _distortion){
+        target_circle = c.copy();
+        luc = _luc.copy();
+        rdc = _rdc.copy();
+        distortion = _distortion;
+    }
+    point_matrix simple_generate(){
+        pms points;
+        for(int x = luc.x; x <= rdc.x; x++){
+            for(int y = luc.y; y <= rdc.y; y++){
+                point this_point = point(x, y);
+                if (dist(cent_point, this_point) <= target_circle.r){
+                    points.push_back(this_point);
+                }
             }
         }
+        return point_matrix(points);
     }
-    point_matrix mt(points);
-    mt.print();
-    cout << endl;
-    system("pause");
-    return 0;
-}
+};

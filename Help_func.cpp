@@ -14,12 +14,15 @@ using namespace std;
 // Constants
 #define POINT_DIST_POW (1/2)
 #define MATRIX_DEBUG_MODE 0
+#define LINE_DEBUG_MODE 0
+#define ERROR_FUNCTION_DEBUGGING_MODE 1
 
 // Functions
 #define sqr(x) (x * x)
 #define dist(a, b) (sqrt(sqr((a.x - b.x)) + sqr((a.y - b.y))))
 #define max(a,b) (((a) > (b)) ? (a) : (b))
 #define min(a,b) (((a) < (b)) ? (a) : (b))
+
 
 
 class point{
@@ -125,6 +128,110 @@ class point_matrix{
             if (p.x < first_x || p.x >= last_x || p.y >= last_y || p.y < first_y) return false;
             return mt[(int)p.x - first_x][(int)p.y - first_y];
         }
+        pms get_points(){
+            pms points;
+            for(int x = 0; x < w; x++){
+                for(int y = 0; y < h; y++){
+                    if(mt[x][y]){
+                        points.push_back(point(x, y));
+                    }
+                }
+            }
+            return points;
+        }
+        point_matrix copy(){
+            return point_matrix(get_points());
+        }
+};
+
+
+class line{
+    public:
+    double k, b;
+    double A, B, C;
+    line (double _k, double _b){
+        k = _k;
+        b = _b;
+    }
+    line (point p1, point p2){
+        if (p1 == p2){
+            cout << "ERROR!!! Can`t define line by one point!!!" << endl;
+            return;
+        }
+        A = p1.y - p2.y;
+        B = p1.x - p2.x;
+        C = p1.x * p2.y - p2.x * p1.y;
+        #if LINE_DEBUG_MODE
+        cout << p1.x << " " << p1.y << " " << p2.x << " " << p2.y << endl;
+        cout << A << " " << B << " " << C << endl;
+        #endif
+    }
+    line  (double _A, double _B, double _C){
+        A = _A;
+        B = _B;
+        C = _C;
+    }
+    line(){
+
+    }
+    
+    double f(double x){
+        if (B == 0){
+            cout << "INFINITY!!!";
+            return x;
+        }
+        return (A * x + C) / B;
+    }
+
+    bool operator == (line &line2){
+        return ((k == line2.k) && (b == line2.b)) || ((A == line2.A) && (B == line2.B) && (C == line2.C));
+    }
+};
+
+
+class segment{
+    public:
+    point p1;
+    point p2;
+    line l;
+    segment(point _p1, point _p2){
+        p1 = _p1;
+        p2 = _p2;
+        l = line(p1, p2);
+    }
+    segment(){
+    
+    }
+    double length(){
+        return dist(p1, p2);
+    }
+};
+
+
+class circle{
+    public:
+    double x, y, r;
+    point center;
+    template <class E, class T, class H>
+    circle(E _x, T _y, T _r){
+        x = (double)_x;
+        y = (double)_y;
+        r = (double)_r;
+        center = point(x, y);
+    }
+    template<class G>
+    circle (point cent, G _r){
+        x = cent.x;
+        y = cent.y;
+        r = _r;
+        center = cent.copy();
+    }
+    circle(){
+
+    }
+    circle copy(){
+        return circle(center, r);
+    }
 };
 
 
@@ -136,13 +243,13 @@ void print_point_vector(pms v){
 }
 
 
-double tanx(point p1, point p2, point p3){
-
+double point_line_dist(point p, line l){
+    return abs(l.A * p.x + l.B * p.y + l.C) / sqrt(sqr(l.A) + sqr(l.B));
 }
 
 
-double point_segment_dist(){
-
+double point_circle_dist(point p, circle c){
+    return(abs(dist(p, c.center) - c.r));
 }
 
 

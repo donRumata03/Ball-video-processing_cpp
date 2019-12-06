@@ -40,7 +40,6 @@ pms generate_neighboors(point p){
 
 pms generate_neighboors(point p, int w, int h){
     pms n;
-    pms n;
     point point_up = p.copy();
     point point_down = p.copy();
     point point_left = p.copy();
@@ -82,12 +81,16 @@ pms detect_edges(pms &points){
 }
 
 
-double error_function(pms &points, double r, point center){
-    pms edges = sort_verts(detect_edges(points));
+double error_function(pms &points, circle c){
+    pms edges = detect_edges(points);
+    #if ERROR_FUNCTION_DEBUGGING_MODE
+    print_point_vector(edges);
+    #endif
     double err = 0;
     for(int i = 0; i < edges.size(); i++){
-        point this_point {edges.at(i).x, edges.at(i).y};
-        err += pow(dist(center, this_point), POINT_DIST_POW);
+        point this_point = point(edges.at(i).x, edges.at(i).y);
+        err += pow(point_circle_dist(this_point, c), POINT_DIST_POW);
     }
+    
     return err;
 }
