@@ -12,10 +12,10 @@ using namespace std;
 #define pms vector<point>
 
 // Constants
-#define POINT_DIST_POW (1/2)
+#define POINT_DIST_POW (((double)1/2))
 #define MATRIX_DEBUG_MODE 0
 #define LINE_DEBUG_MODE 0
-#define ERROR_FUNCTION_DEBUGGING_MODE 1
+#define ERROR_FUNCTION_DEBUGGING_MODE 0
 
 // Functions
 #define sqr(x) (x * x)
@@ -48,6 +48,9 @@ class point{
         new_point.x = x;
         new_point.y = y; 
         return new_point;
+    }
+    void print(){
+        cout << "point: x = " << x << ", y = " << y << "  ";
     }
 };
 
@@ -109,7 +112,7 @@ class point_matrix{
         }
         void print(){
             cout << "Matrix: " << endl;
-            cout << w << " " << h << endl;
+            cout << w << " x " << h << endl;
             for(int y = 0; y < h; y++){
                 for(int x = 0; x < w; x++){
                     if (mt[x][y]){
@@ -140,7 +143,8 @@ class point_matrix{
             return points;
         }
         point_matrix copy(){
-            return point_matrix(get_points());
+            pms points = this->get_points();
+            return point_matrix(points);
         }
 };
 

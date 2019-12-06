@@ -76,6 +76,10 @@ pms detect_edges(pms &points){
         if(mt.at(this_point) && (!has_no_zero_neighboors)){
             result.push_back(this_point);
         }
+        #if ERROR_FUNCTION_DEBUGGING_MODE
+        this_point.print();
+        cout << ((mt.at(this_point) && (!has_no_zero_neighboors)) ? (true) : (false)) << endl;
+        #endif
     }
     return result;
 }
