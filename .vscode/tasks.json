@@ -67,6 +67,28 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+
+        {
+            "type": "shell",
+            "label": "err_func_test",
+            "command": "C:\\Program Files\\gcc\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/error_func_test.cpp",
+                "-o",
+                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/error_func_test.exe"
+            ],
+            "options": {
+                "cwd": "C:\\Program Files\\gcc\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
