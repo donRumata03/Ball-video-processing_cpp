@@ -47,7 +47,8 @@ def counter(path0):
 
 #######     For user:   #################
 code_file_extensions = [".py", ".cpp"]  #
-path_0 = "D:\Projects\Video_anal"       #
+path_0 = "D:\\Projects\\Video_anal"
+data_path = "D:\\Projects\\Video_anal\\"     #
 #########################################
 
 total_sum = 0
