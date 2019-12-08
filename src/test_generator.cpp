@@ -1,7 +1,7 @@
 #include <vector>
 #include <math.h>
 #include <iostream>
-#include <D:\Libraries\PycharmProjects\Podgonyator\Video+Photo\cpp\Help_func.cpp>
+#include <D:/Projects/Video_anal/Help_func.cpp>
 
 using namespace std;
 

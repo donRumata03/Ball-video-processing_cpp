@@ -27,13 +27,34 @@
 
         {
             "type": "shell",
+            "label": "main",
+            "command": "C:\\Program Files\\gcc\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "D:/Projects/Video_anal/Machine_Learning/src/circle_test.cpp",
+                "-o",
+                "D:/Projects/Video_anal/Machine_Learning/bin/circle_test.exe"
+            ],
+            "options": {
+                "cwd": "C:\\Program Files\\gcc\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
             "label": "circle_test",
             "command": "C:\\Program Files\\gcc\\bin\\g++.exe",
             "args": [
                 "-g",
-                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/circle_test.cpp",
+                "D:/Projects/Video_anal/Machine_Learning/src/circle_test.cpp",
                 "-o",
-                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/circle_test.exe"
+                "D:/Projects/Video_anal/Machine_Learning/bin/circle_test.exe"
             ],
             "options": {
                 "cwd": "C:\\Program Files\\gcc\\bin"
@@ -46,16 +67,16 @@
                 "isDefault": true
             }
         },
-
         {
             "type": "shell",
-            "label": "test_generator_test",
+            "label": "Run_counter",
             "command": "C:\\Program Files\\gcc\\bin\\g++.exe",
             "args": [
                 "-g",
-                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/test_generator.cpp",
+                "D:/Projects/Video_anal/Machine_Learning/support/Run counter.cpp",
                 "-o",
-                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/test_generator.exe"
+                "C:\\Users\\Vova\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Run counter.exe",
+                "-Wl,--subsystem,windows"
             ],
             "options": {
                 "cwd": "C:\\Program Files\\gcc\\bin"
@@ -68,26 +89,20 @@
                 "isDefault": true
             }
         },
-
         {
+            // See https://go.microsoft.com/fwlink/?LinkId=733558
+            // for the documentation about the tasks.json format
+            "label": "Run Python File",
+    
             "type": "shell",
-            "label": "err_func_test",
-            "command": "C:\\Program Files\\gcc\\bin\\g++.exe",
+            "command": "python3",
             "args": [
-                "-g",
-                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/error_func_test.cpp",
-                "-o",
-                "D:/Libraries/PycharmProjects/Podgonyator/Video+Photo/cpp/Circling/error_func_test.exe"
+                "${file}"
             ],
-            "options": {
-                "cwd": "C:\\Program Files\\gcc\\bin"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true
             }
         }
     ]

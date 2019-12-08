@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "D:/Projects/Video_anal/",
+                "${workspaceFolder}/src/"
             ],
             "defines": [
                 "_DEBUG",
