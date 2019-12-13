@@ -24,7 +24,6 @@
                 "isDefault": true
             }
         },
-
         {
             "type": "shell",
             "label": "main",
@@ -90,20 +89,40 @@
             }
         },
         {
-            // See https://go.microsoft.com/fwlink/?LinkId=733558
-            // for the documentation about the tasks.json format
             "label": "Run Python File",
-    
             "type": "shell",
-            "command": "python3",
+            "command": "C:/Users/Vova/AppData/Local/Programs/Python/Python37-32/python.exe",
             "args": [
-                "${file}"
+                "D:/Projects/Video_anal/Machine_Learning/support/timedate_test.py"
             ],
             "presentation": {
                 "echo": true,
                 "reveal": "always",
                 "focus": true
-            }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Project counter",
+            "type": "shell",
+            "command": "C:/Users/Vova/AppData/Local/Programs/Python/Python37-32/python.exe",
+            "args": [
+                "D:/Projects/Video_anal/Machine_Learning/support/Project_length_counter.py"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
         }
     ]
 }
